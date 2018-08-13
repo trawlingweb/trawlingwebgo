@@ -31,12 +31,23 @@ func main() {
 
 ```
 
+### Links:
+[Register](https://trawlingweb.com/dashboard/register)
+
+[Control Panel](https://trawlingweb.com/dashboard)
+
+[API documentation](https://trawlingweb.com/dashboard/documentation)
+
+[Github Repository](https://github.com/anpro21)
+
+
 ### Input Params:
-* protocol: "http"/"https"
-* ts: unixtimestamp in ms
-* tsi: unixtimestamp in ms
-* sort: "published"/"crawled"
-* order: "asc"/"desc"
+* Token: string with service key
+* Query: String with trawling query
+* Ts: unixtimestamp in ms
+* Tsi: unixtimestamp in ms
+* Sort: "published"/"crawled"
+* Order: "asc"/"desc"
 
 ### Input Params struct:
 
