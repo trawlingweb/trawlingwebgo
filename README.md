@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	request := trawlingweb.TrwRequest{Token: "ea58ad77426816b16f2cd3c950de07886bc64472", Query: "presidente%20AND%20language:es", Ts: "", Tsi: "", Sort: "", Order: ""}
+	request := trawlingweb.TrwRequest{Token: "ea58ad77426816b16f2cd3c950de07886bc64472", Query: "presidente AND language:es", Ts: "", Tsi: "", Sort: "", Order: ""}
 	ret, err := trawlingweb.Query(request)
 	if err != nil {
 		fmt.Println((err.Error()))
