@@ -84,7 +84,7 @@ func Query(params TrwRequest) (TrwResponse, error) {
 		return res, err
 	}
 
-	req.Header.Set("User-Agent", "Trawlingweb Go Client 1.0")
+	req.Header.Set("User-Agent", "trawlingweb-cli.go 1.0")
 
 	resp, err := client.Do(req)
 	if err != nil {
