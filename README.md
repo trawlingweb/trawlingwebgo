@@ -11,15 +11,16 @@ package main
 import (
 	"fmt"
 
-	trawlingweb "github.com/anpro21/trawlingwebgo"
+	trw "github.com/anpro21/trawlingwebgo"
 )
 
 func main() {
-	request := trawlingweb.TrwRequest{Token: "ea58ad77426816b16f2cd3c950de07886bc64472", Query: "presidente AND language:es", Ts: "", Tsi: "", Sort: "", Order: ""}
-	ret, err := trawlingweb.Query(request)
+	request := trw.TrwRequest{Token: "ea58ad77426816b16f2cd3c950de07886bc64472", Query: "debian", Ts: "1533459254944", Tsi: "", Sort: "", Order: ""}
+	ret, err := trw.Query(request)
 	if err != nil {
-		fmt.Println((err.Error()))
+		panic(err.Error())
 	} else {
+		fmt.Println("Articles: ", len(ret.Response.Data))
 		for _, article := range ret.Response.Data {
 			fmt.Println(article.Title)
 			fmt.Println(article.URL)
@@ -27,8 +28,22 @@ func main() {
 			fmt.Println("---------------------")
 		}
 	}
-}
 
+	urlnext := ret.Response.Next
+	for urlnext != "" {
+		ret, err = trw.Next(urlnext)
+		if err != nil {
+			panic(err.Error())
+		}
+		fmt.Println("Articles: ", len(ret.Response.Data))
+		fmt.Println("Rest results: ", ret.Response.RestResults)
+		fmt.Println("---------------------")
+		urlnext = ret.Response.Next
+	}
+
+	fmt.Println("End Query")
+
+}
 ```
 
 ### Links:
@@ -40,6 +55,11 @@ func main() {
 
 [Github Repository](https://github.com/anpro21)
 
+### Functions:
+```
+Query(params TrwRequest)
+Next(nexturl string)
+```
 
 ### Input Params:
 * Token: string with service key

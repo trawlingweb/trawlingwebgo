@@ -54,50 +54,59 @@ type TrwError struct {
 	} `json:"response"`
 }
 
-// Query function
-func Query(params TrwRequest) (TrwResponse, error) {
-	v := reflect.ValueOf(params)
-	twurl := "https://api.trawlingweb.com/?"
-	for i := 0; i < v.NumField(); i++ {
-		if v.Field(i).String() != "" {
-			if i != 0 {
-				twurl += "&"
-			}
-			if v.Type().Field(i).Name == "Query" {
-				sturl := v.Field(i).String()
-				encodedPath := url.QueryEscape(sturl)
-				twurl += strings.ToLower(v.Type().Field(i).Name) + "=" + encodedPath
-			} else {
-				twurl += strings.ToLower(v.Type().Field(i).Name) + "=" + v.Field(i).String()
-			}
-		}
-	}
-
+// Request to https service
+func Request(url string) (TrwResponse, error) {
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
-	client := &http.Client{Transport: tr}
-	var res TrwResponse
 
-	req, err := http.NewRequest("GET", twurl, nil)
+	client := &http.Client{Transport: tr}
+
+	var res TrwResponse
+	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return res, err
 	}
 
 	req.Header.Set("User-Agent", "trawlingweb-cli.go 1.0")
-
-	resp, err := client.Do(req)
-	if err != nil {
+	resp, err2 := client.Do(req)
+	if err2 != nil {
 		return res, err
 	}
+
+	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
 		return res, fmt.Errorf("http status code: %d", resp.StatusCode)
 	}
 
-	defer resp.Body.Close()
+	err3 := json.NewDecoder(resp.Body).Decode(&res)
+	return res, err3
+}
 
-	err2 := json.NewDecoder(resp.Body).Decode(&res)
-	return res, err2
+// Query Initial function
+func Query(params TrwRequest) (TrwResponse, error) {
+	values := reflect.ValueOf(params)
+	twurl := "https://api.trawlingweb.com/?"
+	for i := 0; i < values.NumField(); i++ {
+		if values.Field(i).String() != "" {
+			if i != 0 {
+				twurl += "&"
+			}
+			if values.Type().Field(i).Name == "Query" {
+				sturl := values.Field(i).String()
+				encodedPath := url.PathEscape(sturl)
+				twurl += "q=" + encodedPath
+			} else {
+				twurl += strings.ToLower(values.Type().Field(i).Name) + "=" + values.Field(i).String()
+			}
+		}
+	}
 
+	return Request(twurl)
+}
+
+// Next query function
+func Next(twurl string) (TrwResponse, error) {
+	return Request(twurl)
 }
