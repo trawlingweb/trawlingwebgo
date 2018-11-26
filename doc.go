@@ -11,29 +11,32 @@ import (
 	"time"
 )
 
+// TrwArticle API Structure
+type TrwArticle struct {
+	SiteRegion   string    `json:"site_region"`
+	SiteType     string    `json:"site_type"`
+	Crawled      int64     `json:"crawled"`
+	Author       string    `json:"author"`
+	Language     string    `json:"language"`
+	Published    time.Time `json:"published"`
+	Title        string    `json:"title"`
+	URL          string    `json:"url"`
+	Site         string    `json:"site"`
+	SiteCountry  string    `json:"site_country"`
+	Domain       string    `json:"domain"`
+	Text         string    `json:"text"`
+	SiteLanguage string    `json:"site_language"`
+	ID           string    `json:"id"`
+}
+
 // TrwResponse API structure
 type TrwResponse struct {
 	Response struct {
-		Data []struct {
-			SiteRegion   string    `json:"site_region"`
-			SiteType     string    `json:"site_type"`
-			Crawled      int64     `json:"crawled"`
-			Author       string    `json:"author"`
-			Language     string    `json:"language"`
-			Published    time.Time `json:"published"`
-			Title        string    `json:"title"`
-			URL          string    `json:"url"`
-			Site         string    `json:"site"`
-			SiteCountry  string    `json:"site_country"`
-			Domain       string    `json:"domain"`
-			Text         string    `json:"text"`
-			SiteLanguage string    `json:"site_language"`
-			ID           string    `json:"id"`
-		} `json:"data"`
-		RequestLeft  int    `json:"requestLeft"`
-		TotalResults int    `json:"totalResults"`
-		RestResults  int    `json:"restResults"`
-		Next         string `json:"next"`
+		Data         []TrwArticle `json:"data"`
+		RequestLeft  int          `json:"requestLeft"`
+		TotalResults int          `json:"totalResults"`
+		RestResults  int          `json:"restResults"`
+		Next         string       `json:"next"`
 	} `json:"response"`
 }
 
@@ -68,7 +71,7 @@ func Request(url string) (TrwResponse, error) {
 		return res, err
 	}
 
-	req.Header.Set("User-Agent", "trawlingweb-cli.go 1.0")
+	req.Header.Set("User-Agent", "trawlingweb-cli.go 1.1")
 	resp, err2 := client.Do(req)
 	if err2 != nil {
 		return res, err

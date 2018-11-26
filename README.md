@@ -86,27 +86,32 @@ type TrwRequest struct {
 ```go
 type TrwResponse struct {
 	Response struct {
-		Data []struct {
-			SiteRegion   string    `json:"site_region"`
-			SiteType     string    `json:"site_type"`
-			Crawled      int64     `json:"crawled"`
-			Author       string    `json:"author"`
-			Language     string    `json:"language"`
-			Published    time.Time `json:"published"`
-			Title        string    `json:"title"`
-			URL          string    `json:"url"`
-			Site         string    `json:"site"`
-			SiteCountry  string    `json:"site_country"`
-			Domain       string    `json:"domain"`
-			Text         string    `json:"text"`
-			SiteLanguage string    `json:"site_language"`
-			ID           string    `json:"id"`
-		} `json:"data"`
-		RequestLeft  int    `json:"requestLeft"`
-		TotalResults int    `json:"totalResults"`
-		RestResults  int    `json:"restResults"`
-		Next         string `json:"next"`
+		Data         []TrwArticle `json:"data"`
+		RequestLeft  int          `json:"requestLeft"`
+		TotalResults int          `json:"totalResults"`
+		RestResults  int          `json:"restResults"`
+		Next         string       `json:"next"`
 	} `json:"response"`
+}
+```
+
+###Article struct:
+```go
+type TrwArticle struct {
+	SiteRegion   string    `json:"site_region"`
+	SiteType     string    `json:"site_type"`
+	Crawled      int64     `json:"crawled"`
+	Author       string    `json:"author"`
+	Language     string    `json:"language"`
+	Published    time.Time `json:"published"`
+	Title        string    `json:"title"`
+	URL          string    `json:"url"`
+	Site         string    `json:"site"`
+	SiteCountry  string    `json:"site_country"`
+	Domain       string    `json:"domain"`
+	Text         string    `json:"text"`
+	SiteLanguage string    `json:"site_language"`
+	ID           string    `json:"id"`
 }
 ```
 
