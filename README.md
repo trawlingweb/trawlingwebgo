@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	request := trw.TrwRequest{Token: "ea58ad77426816b16f2cd3c950de07886bc64472", Query: "debian", Ts: "1533459254944", Tsi: "", Sort: "", Order: ""}
+	request := trw.TrwRequest{Token: "ea58ad77426816b16f2cd3c950de07886bc64472", Query: "debian AND redhat", Ts: "1533459254944"}
 	ret, err := trw.Query(request)
 	if err != nil {
 		panic(err.Error())
