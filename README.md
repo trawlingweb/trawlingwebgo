@@ -98,19 +98,24 @@ type TrwResponse struct {
 ###Article struct:
 ```go
 type TrwArticle struct {
-	SiteRegion   string    `json:"site_region"`
-	SiteType     string    `json:"site_type"`
 	Crawled      int64     `json:"crawled"`
 	Author       string    `json:"author"`
 	Language     string    `json:"language"`
 	Published    time.Time `json:"published"`
 	Title        string    `json:"title"`
 	URL          string    `json:"url"`
+	Section      string    `json:"section"`
+	Value        float64   `json:"value"`
+	Rank         int64     `json:"rank"`
+	Visitors     int64     `json:"unique_visitors"`
 	Site         string    `json:"site"`
+	SiteType     string    `json:"site_type"`
+	SiteSection  string    `json:"site_section"`
+	SiteLanguage string    `json:"site_language"`
+	SiteRegion   string    `json:"site_region"`
 	SiteCountry  string    `json:"site_country"`
 	Domain       string    `json:"domain"`
 	Text         string    `json:"text"`
-	SiteLanguage string    `json:"site_language"`
 	ID           string    `json:"id"`
 }
 ```
