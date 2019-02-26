@@ -47,11 +47,11 @@ func main() {
 ```
 
 ### Links:
-[Register](https://trawlingweb.com/dashboard/register)
+[Register](https://dashboard.trawlingweb.com/register)
 
-[Control Panel](https://trawlingweb.com/dashboard)
+[Control Panel](https://dashboard.trawlingweb.com)
 
-[API documentation](https://trawlingweb.com/dashboard/documentation)
+[API documentation](https://dashboard.trawlingweb.com/dashboard)
 
 [Github Repository](https://github.com/anpro21)
 
