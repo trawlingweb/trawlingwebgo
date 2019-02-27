@@ -103,7 +103,7 @@ func Query(params TrwRequest) (TrwResponse, error) {
 			}
 			if values.Type().Field(i).Name == "Query" {
 				sturl := values.Field(i).String()
-				encodedPath := url.PathEscape(sturl)
+				encodedPath := url.QueryEscape(sturl)
 				twurl += "q=" + encodedPath
 			} else {
 				twurl += strings.ToLower(values.Type().Field(i).Name) + "=" + values.Field(i).String()
