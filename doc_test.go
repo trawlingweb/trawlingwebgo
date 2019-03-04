@@ -13,7 +13,7 @@ func TestRequest(t *testing.T) {
 	} else {
 		t.Log("Articles: ", len(ret.Response.Data))
 		for _, article := range ret.Response.Data {
-			t.Log(article.URL)
+			t.Log(article.Title)
 		}
 	}
 }
