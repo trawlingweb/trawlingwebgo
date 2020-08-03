@@ -76,7 +76,7 @@ func Request(url string) (TrwResponse, error) {
 		return res, err
 	}
 
-	req.Header.Set("User-Agent", "trawlingweb-cli.go 1.1")
+	req.Header.Set("User-Agent", "trawlingweb-cli.go 1.2")
 	resp, err2 := client.Do(req)
 	if err2 != nil {
 		return res, err
