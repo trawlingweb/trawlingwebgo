@@ -46,7 +46,7 @@ func main() {
 }
 ```
 
-### Links:
+### Links
 [Register](https://dashboard.trawlingweb.com/register)
 
 [Control Panel](https://dashboard.trawlingweb.com)
@@ -55,13 +55,13 @@ func main() {
 
 [Github Repository](https://github.com/anpro21)
 
-### Functions:
+### Functions
 ```
 Query(params TrwRequest)
 Next(nexturl string)
 ```
 
-### Input Params:
+### Input Params
 * Token: string with service key
 * Query: String with trawling query
 * Ts: unixtimestamp in ms
@@ -69,7 +69,7 @@ Next(nexturl string)
 * Sort: "published"/"crawled"
 * Order: "asc"/"desc"
 
-### Input Params struct:
+### Input Params struct
 
 ```go
 type TrwRequest struct {
@@ -82,7 +82,7 @@ type TrwRequest struct {
 }
 ```
 
-### Return struct:
+### Return struct
 ```go
 type TrwResponse struct {
 	Response struct {
@@ -95,7 +95,7 @@ type TrwResponse struct {
 }
 ```
 
-###Article struct:
+### Article struct
 ```go
 type TrwArticle struct {
 	Crawled      int64     `json:"crawled"`
