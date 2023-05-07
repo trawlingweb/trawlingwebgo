@@ -22,7 +22,7 @@ func TestArticleRequest(t *testing.T) {
 
 func TestWorkerRequest(t *testing.T) {
 	request := models.WorkerRequest{Token: "ea58ad77426816b16f2cd3c950de07886bc64472"}
-	ret, err := Worker("", request)
+	ret, err := GetWorker("", request)
 	t.Log(ret.Response.TotalResults)
 	if err != nil {
 		panic(err.Error())

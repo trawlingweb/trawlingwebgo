@@ -13,14 +13,14 @@ import (
 )
 
 // WorkerRequest to https service
-func WorkerRequest(url string) (models.WorkerResponse, error) {
+func WorkerRequest(url string) (models.WorkerResultsResponse, error) {
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 
 	client := &http.Client{Transport: tr}
 
-	var res models.WorkerResponse
+	var res models.WorkerResultsResponse
 	req, err := http.NewRequest("POST", url, nil)
 	if err != nil {
 		return res, err
@@ -43,7 +43,7 @@ func WorkerRequest(url string) (models.WorkerResponse, error) {
 }
 
 // GetWorker
-func GetWorker(workerID string, params models.GetWorkerRequest) (models.GetWorkerResponse, error) {
+func GetWorker(workerID string, params models.WorkerRequest) (models.WorkerResultsResponse, error) {
 	values := reflect.ValueOf(params)
 	trwurl := fmt.Sprintf("https://api.trawlingweb.com/posts/%v?", workerID)
 	for i := 0; i < values.NumField(); i++ {
@@ -59,7 +59,7 @@ func GetWorker(workerID string, params models.GetWorkerRequest) (models.GetWorke
 }
 
 // DeleteWorker
-func DeleteWorker(workerID, token string) (models.DeleteWorkerResponse, error) {
+func DeleteWorker(workerID, token string) (models.WorkerResponse, error) {
 	url := fmt.Sprintf("https://api.trawlingweb.com/delete/%v?token=%v", workerID, token)
 
 	tr := &http.Transport{
@@ -68,7 +68,7 @@ func DeleteWorker(workerID, token string) (models.DeleteWorkerResponse, error) {
 
 	client := &http.Client{Transport: tr}
 
-	var res models.DeleteWorkerResponse
+	var res models.WorkerResponse
 	req, err := http.NewRequest("DELETE", url, nil)
 	if err != nil {
 		return res, err
@@ -91,7 +91,7 @@ func DeleteWorker(workerID, token string) (models.DeleteWorkerResponse, error) {
 }
 
 // WorkerNext query function
-func WorkerNext(trwurl string) (models.WorkerResponse, error) {
+func WorkerNext(trwurl string) (models.WorkerResultsResponse, error) {
 	return WorkerRequest(trwurl)
 }
 
@@ -126,14 +126,14 @@ func ArticleRequest(url string) (models.ArticleResponse, error) {
 }
 
 // ArticleRequest to https service
-func SCRTweetRequest(url string) (models.GetTwitterScrResponse, error) {
+func SCRTweetRequest(url string) (models.TwitterScrResponse, error) {
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 
 	client := &http.Client{Transport: tr}
 
-	var res models.GetTwitterScrResponse
+	var res models.TwitterScrResponse
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return res, err
@@ -155,7 +155,7 @@ func SCRTweetRequest(url string) (models.GetTwitterScrResponse, error) {
 	return res, err3
 }
 
-func TwitterQuery(params models.ArticleRequest) (models.GetTwitterScrResponse, error) {
+func TwitterQuery(params models.ArticleRequest) (models.TwitterScrResponse, error) {
 	values := reflect.ValueOf(params)
 	twurl := "https://twitter.scr.trawlingweb.com/posts/?"
 	for i := 0; i < values.NumField(); i++ {
@@ -204,6 +204,6 @@ func Next(twurl string) (models.ArticleResponse, error) {
 }
 
 // Next query function
-func NextSCRTweet(twurl string) (models.GetTwitterScrResponse, error) {
+func NextSCRTweet(twurl string) (models.TwitterScrResponse, error) {
 	return SCRTweetRequest(twurl)
 }
