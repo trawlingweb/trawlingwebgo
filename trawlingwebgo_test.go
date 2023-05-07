@@ -3,7 +3,7 @@ package trawlingwebgo
 import (
 	"testing"
 
-	"github.com/trawlingweb/trawlingwebgo/models"
+	"github.com/websays-intelligence/trawlingwebgo/models"
 )
 
 func TestArticleRequest(t *testing.T) {

@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/trawlingweb/trawlingwebgo/models"
+	"github.com/websays-intelligence/trawlingwebgo/models"
 )
 
 // WorkerRequest to https service
