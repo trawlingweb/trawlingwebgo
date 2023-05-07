@@ -1,12 +1,12 @@
 package models
 
-type GetWorkerRequest struct {
+type WorkerRequest struct {
 	Token string
 	Ts    string
 	Tsi   string
 }
 
-type GetArticleRequest struct {
+type ArticleRequest struct {
 	Token string
 	Query string
 	Ts    string

@@ -1,6 +1,6 @@
 package models
 
-type GetWorkerResponse struct {
+type WorkerResponse struct {
 	Response struct {
 		Data         []Tweet `json:"data"`
 		TotalResults int     `json:"totalResults"`
@@ -25,7 +25,7 @@ type DeleteWorkerResponse struct {
 	} `json:"response"`
 }
 
-type GetArticleResponse struct {
+type ArticleResponse struct {
 	Response struct {
 		Data         []Article `json:"data"`
 		RequestLeft  int       `json:"requestLeft"`

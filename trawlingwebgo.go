@@ -13,14 +13,14 @@ import (
 )
 
 // WorkerRequest to https service
-func WorkerRequest(url string) (models.GetWorkerResponse, error) {
+func WorkerRequest(url string) (models.WorkerResponse, error) {
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 
 	client := &http.Client{Transport: tr}
 
-	var res models.GetWorkerResponse
+	var res models.WorkerResponse
 	req, err := http.NewRequest("POST", url, nil)
 	if err != nil {
 		return res, err
@@ -91,19 +91,19 @@ func DeleteWorker(workerID, token string) (models.DeleteWorkerResponse, error) {
 }
 
 // WorkerNext query function
-func WorkerNext(trwurl string) (models.GetWorkerResponse, error) {
+func WorkerNext(trwurl string) (models.WorkerResponse, error) {
 	return WorkerRequest(trwurl)
 }
 
 // ArticleRequest to https service
-func ArticleRequest(url string) (models.GetArticleResponse, error) {
+func ArticleRequest(url string) (models.ArticleResponse, error) {
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 
 	client := &http.Client{Transport: tr}
 
-	var res models.GetArticleResponse
+	var res models.ArticleResponse
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return res, err
@@ -155,7 +155,7 @@ func SCRTweetRequest(url string) (models.GetTwitterScrResponse, error) {
 	return res, err3
 }
 
-func TwitterQuery(params models.GetArticleRequest) (models.GetTwitterScrResponse, error) {
+func TwitterQuery(params models.ArticleRequest) (models.GetTwitterScrResponse, error) {
 	values := reflect.ValueOf(params)
 	twurl := "https://twitter.scr.trawlingweb.com/posts/?"
 	for i := 0; i < values.NumField(); i++ {
@@ -176,9 +176,8 @@ func TwitterQuery(params models.GetArticleRequest) (models.GetTwitterScrResponse
 	return SCRTweetRequest(twurl)
 }
 
-
 // Query Initial function
-func Query(params models.GetArticleRequest) (models.GetArticleResponse, error) {
+func Query(params models.ArticleRequest) (models.ArticleResponse, error) {
 	values := reflect.ValueOf(params)
 	twurl := "https://api.trawlingweb.com/?"
 	for i := 0; i < values.NumField(); i++ {
@@ -200,7 +199,7 @@ func Query(params models.GetArticleRequest) (models.GetArticleResponse, error) {
 }
 
 // Next query function
-func Next(twurl string) (models.GetArticleResponse, error) {
+func Next(twurl string) (models.ArticleResponse, error) {
 	return ArticleRequest(twurl)
 }
 

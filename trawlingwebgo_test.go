@@ -7,7 +7,7 @@ import (
 )
 
 func TestArticleRequest(t *testing.T) {
-	request := models.GetArticleRequest{Token: "ea58ad77426816b16f2cd3c950de07886bc64472", Query: "\"Girona\" AND \"Barcelona\""}
+	request := models.ArticleRequest{Token: "ea58ad77426816b16f2cd3c950de07886bc64472", Query: "\"Girona\" AND \"Barcelona\""}
 	ret, err := Query(request)
 	t.Log(ret.Response.TotalResults)
 	if err != nil {
@@ -21,8 +21,8 @@ func TestArticleRequest(t *testing.T) {
 }
 
 func TestWorkerRequest(t *testing.T) {
-	request := models.GetWorkerRequest{Token: "ea58ad77426816b16f2cd3c950de07886bc64472"}
-	ret, err := GetWorker("", request)
+	request := models.WorkerRequest{Token: "ea58ad77426816b16f2cd3c950de07886bc64472"}
+	ret, err := Worker("", request)
 	t.Log(ret.Response.TotalResults)
 	if err != nil {
 		panic(err.Error())
