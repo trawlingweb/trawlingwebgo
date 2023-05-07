@@ -9,6 +9,15 @@ type GetWorkerResponse struct {
 	} `json:"response"`
 }
 
+type GetTwitterScrResponse struct {
+	Response struct {
+		Data         []SCRTweet `json:"data"`
+		TotalResults int        `json:"totalResults"`
+		RestResults  int        `json:"restResults"`
+		Next         string     `json:"next"`
+	} `json:"response"`
+}
+
 type DeleteWorkerResponse struct {
 	Response struct {
 		Worker  string `json:"worker"`

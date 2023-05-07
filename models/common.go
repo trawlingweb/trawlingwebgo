@@ -39,6 +39,31 @@ type Tweet struct {
 	UserMentions            []string  `json:"user_mentions"`
 }
 
+type SCRTweet struct {
+    ID                 string  `json:"id"`
+    Hash               string  `json:"hash"`
+    Published          string  `json:"published"`
+    Crawled            int64   `json:"crawled"`
+    Updated            int64   `json:"updated"`
+    PostID             string  `json:"post_id"`
+    URL                string  `json:"url"`
+    Text               string  `json:"text"`
+    Lang               string  `json:"lang"`
+    RetweetCount       int     `json:"retweet_count"`
+    ReplyCount         int     `json:"reply_count"`
+    FavoriteCount      int     `json:"favorite_count"`
+    ReproductionsCount int     `json:"reproductions_count"`
+    UserName           string  `json:"user_name"`
+    UserScreenName     string  `json:"user_screen_name"`
+    UserURL            string  `json:"user_url"`
+    UserProfileImageURL string  `json:"user_profile_image_url"`
+    EntitiesURL        string  `json:"entities_url"`
+    Hashtags           string  `json:"hashtags"`
+    UserMentions       string  `json:"user_mentions"`
+    TimeDistance       float64 `json:"time_distance"`
+    Reply              bool    `json:"reply"`
+}
+
 type Article struct {
 	Crawled      int64     `json:"crawled"`
 	Author       string    `json:"author"`
