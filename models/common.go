@@ -61,7 +61,6 @@ type SCRTweet struct {
 	UserMentions         string  `json:"user_mentions"`
 	TimeDistance         float64 `json:"time_distance"`
 	Reply                bool    `json:"reply"`
-	UserID               string  `json:"user_id"`
 	UserName             string  `json:"user_name"`
 	UserScreenName       string  `json:"user_screen_name"`
 	UserCreationDate     string  `json:"user_creation_date"`
