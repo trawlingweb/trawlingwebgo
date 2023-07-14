@@ -22,7 +22,7 @@ type Tweet struct {
 	UserMentions         string  `json:"user_mentions"`
 	TimeDistance         float64 `json:"time_distance"`
 	Reply                bool    `json:"reply"`
-	UserID                  int64     `json:"user_id"`
+	UserID               int64   `json:"user_id"`
 	UserName             string  `json:"user_name"`
 	UserScreenName       string  `json:"user_screen_name"`
 	UserCreationDate     string  `json:"user_creation_date"`
@@ -42,7 +42,6 @@ type Tweet struct {
 }
 
 type SCRTweet struct {
-   
 	ID                   string  `json:"id"`
 	Hash                 string  `json:"hash"`
 	Published            string  `json:"published"`
@@ -62,7 +61,7 @@ type SCRTweet struct {
 	UserMentions         string  `json:"user_mentions"`
 	TimeDistance         float64 `json:"time_distance"`
 	Reply                bool    `json:"reply"`
-	UserID                  int64     `json:"user_id"`
+	UserID               string  `json:"user_id"`
 	UserName             string  `json:"user_name"`
 	UserScreenName       string  `json:"user_screen_name"`
 	UserCreationDate     string  `json:"user_creation_date"`
