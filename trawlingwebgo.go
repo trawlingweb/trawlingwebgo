@@ -157,7 +157,7 @@ func SCRTweetRequest(url string) (models.TwitterScrResponse, error) {
 
 func TwitterQuery(params models.ArticleRequest) (models.TwitterScrResponse, error) {
 	values := reflect.ValueOf(params)
-	twurl := "https://twitter.trawlingweb.com/posts_full/?"
+	twurl := "https://twitter.trawlingweb.com/posts_history/?"
 	for i := 0; i < values.NumField(); i++ {
 		if values.Field(i).String() != "" {
 			if i != 0 {
