@@ -133,6 +133,10 @@ func SCRTweetRequest(url string) (models.TwitterScrResponse, error) {
 
 	client := &http.Client{Transport: tr}
 
+
+	fmt.Println("Request URL ");
+	fmt.Println(url);
+
 	var res models.TwitterScrResponse
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -146,6 +150,9 @@ func SCRTweetRequest(url string) (models.TwitterScrResponse, error) {
 	}
 
 	defer resp.Body.Close()
+
+	fmt.Println("Response ");
+	fmt.Println(resp.Body);
 
 	if resp.StatusCode != 200 {
 		return res, fmt.Errorf("http status code: %d", resp.StatusCode)
