@@ -183,6 +183,29 @@ func TwitterQuery(params models.ArticleRequest) (models.TwitterScrResponse, erro
 	return SCRTweetRequest(twurl)
 }
 
+func TwitterQueryTH(params models.ArticleRequest) (models.TwitterScrResponse, error) {
+	values := reflect.ValueOf(params)
+	twurl := "https://twitter.trawlingweb.com/posts_history_th/?"
+	for i := 0; i < values.NumField(); i++ {
+		if values.Field(i).String() != "" {
+			if i != 0 {
+				twurl += "&"
+			}
+			if values.Type().Field(i).Name == "Query" {
+				sturl := values.Field(i).String()
+				encodedPath := url.QueryEscape(sturl)
+				twurl += "q=" + encodedPath
+			} else {
+				twurl += strings.ToLower(values.Type().Field(i).Name) + "=" + values.Field(i).String()
+			}
+		}
+	}
+
+	return SCRTweetRequest(twurl)
+}
+
+
+
 // Query Initial function
 func Query(params models.ArticleRequest) (models.ArticleResponse, error) {
 	values := reflect.ValueOf(params)
